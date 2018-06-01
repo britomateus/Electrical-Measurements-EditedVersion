@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <stdlib.h>
+#include <WifiManager.h>
 
 //DEFINES AND FOWARDS DECLARATIONS ======================
 
@@ -33,6 +34,14 @@ void setup() {
     key = getFingerPrint();
     WiFi.begin("ESP", "12345678");
     Serial.begin(9600);
+    /*código com wifimanager:
+    wifiManager wifiManager;
+    wifiManager.autoConnect("ESP","12345678");
+        ou: wifiManager.autoConnect("AutoConnectAP") ?
+    Serial.print("conexão realizada");
+    Seria.print(Wifi.localIP());
+    
+    */
     pinMode(pinSensor, INPUT_PULLUP);
     delay(10);
         while (WiFi.status() != WL_CONNECTED) {
